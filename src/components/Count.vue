@@ -12,6 +12,7 @@
     <BalanceAction
         text="remove balance"
         @action="remove"
+        :disable="disable"
     />
 </template>
 
@@ -28,14 +29,17 @@ export default {
             count: 'Master',
             status: false,
             services: ['Transaction', 'Payment', 'Search'],
+            disable: false,
         }
     },
     methods: {
         add() {
             this.balance = this.balance + 100
+            this.disable = false
         },
         remove() {
             if (this.balance === 0) {
+                this.disable = true
                 alert('Zero Qt')
             } else {
                 this.balance = this.balance - 100
