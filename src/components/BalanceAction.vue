@@ -1,10 +1,12 @@
 <template>
-    <button>add/remove balance</button>
+    <button>{{ text }}</button>
 </template>
 
 <script>
 export default {
-
+    props: {
+        text: String,
+    },
 }
 </script>
 
