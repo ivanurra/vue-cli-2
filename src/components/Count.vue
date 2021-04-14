@@ -5,8 +5,14 @@
     <div v-for="(item, index) in services" :key="index">
         {{index + 1}} - {{ item }}
     </div>
-    <BalanceAction text="add balance"/>
-    <BalanceAction text="remove balance"/>
+    <BalanceAction 
+        text="add balance"
+        @action="add"
+    />
+    <BalanceAction
+        text="remove balance"
+        @action="remove"
+    />
 </template>
 
 <script>
@@ -29,7 +35,11 @@ export default {
             this.balance = this.balance + 100
         },
         remove() {
-            this.balance = this.balance - 100
+            if (this.balance === 0) {
+                alert('Zero Qt')
+            } else {
+                this.balance = this.balance - 100
+            }
         },
     },
 }
