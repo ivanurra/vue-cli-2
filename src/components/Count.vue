@@ -5,10 +5,17 @@
     <div v-for="(item, index) in services" :key="index">
         {{index + 1}} - {{ item }}
     </div>
+    <BalanceAction />
+    <BalanceAction />
 </template>
 
 <script>
+import BalanceAction from './BalanceAction.vue'
+
 export default {
+    components: { 
+      BalanceAction 
+    },
     data() {
         return {
             balance: 1000,
@@ -16,6 +23,14 @@ export default {
             status: false,
             services: ['Transaction', 'Payment', 'Search'],
         }
+    },
+    methods: {
+        add() {
+            this.balance = this.balance + 100
+        },
+        remove() {
+            this.balance = this.balance - 100
+        },
     },
 }
 </script>
